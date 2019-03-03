@@ -6,20 +6,19 @@ from converter import LasConverter
 class LasConverterTest(TestCase):
 
     def setUp(self):
-        self.cv = LasConverter("files/sample2.las")
+        self.cv = LasConverter("../files/sample2.las")
         self.d = self.cv.get_dict()
 
     def test_file_supported(self):
         with self.assertRaises(Exception) as E:
-            self.c = LasConverter("files/sample1.json")
+            self.c = LasConverter("../files/sample1.json")
         self.assertTrue("File format no supported!", E.exception)
 
     def test_version_supported(self):
-        try:
-            self.cv = LasConverter("files/sample0.las")
+        self.cv = LasConverter("../files/sample0.las")
+        with self.assertRaises(Exception) as E:
             self.cv.get_dict()
-        except Exception as E:
-            self.assertTrue("Version not supported!", E.exception)
+        self.assertTrue("Version not supported!", E.exception)
 
     def test_keys_dict(self):
         d_keys = self.d.keys()

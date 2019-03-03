@@ -144,8 +144,3 @@ class LasConverter :
         return self.__log
     
 
-if __name__ == "__main__":
-    c = LasConverter("files/sample0.las")
-    json_files = c.get_json()
-
-
