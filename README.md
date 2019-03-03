@@ -4,7 +4,7 @@ This package useful for reading and converting the LAS file to python `dict` and
 
 LAS (Log ASCII Standard) is a structured ASCII file containing log curve data and header information. For more [detail](http://www.cwls.org/wp-content/uploads/2017/02/Las2_Update_Feb2017.pdf).
 
-#### Example LAS File
+### Example LAS File
 
 ```
 ~VERSION INFORMATION
@@ -15,7 +15,12 @@ LAS (Log ASCII Standard) is a structured ASCII file containing log curve data an
 
 see full LAS file [here](https://github.com/josestnggng/Las-converter/blob/master/files/sample1.las).
 
-#### How to use
+### Installation
+```bash
+pip install las-converter
+```
+
+### How to use
 
 ```py
 from LAS import LasConverter
@@ -25,7 +30,7 @@ data_in_dict = c.get_dict() # return a dict
 data_in_json = c.get_json() # return json and make new file outfile.json
 ```
 
-#### Contributors
+### Contributors
 
 - [Asido Saputra Sigalingging](https://github.com/asidosaputra)
 - [Jose Sitanggang](https://github.com/josestnggng)
