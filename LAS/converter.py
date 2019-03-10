@@ -2,20 +2,34 @@ import re
 import json
 
 class LasConverter :
-    def __init__(self,file):
-
-        ext = file.rsplit(".",1)[-1].lower() 
-        if  ext != "las":
-            raise Exception("File format no supported!")
-
+    def __init__(self):
         self.supported_version = {2.0}
         self.__log = {"version":{},"well":{},"curve":{},"parameter":{},"data" :{},"other":""}
         self.__generated_keys = []
         self.__null_val = None
         self.__has_converted = False
-            
-        with open(file,"r") as f:
-            self.__lines = f.readlines() # read all lines from data
+
+    def set_file(self, file):
+        ext = file.rsplit(".", 1)[-1].lower()
+        if ext != "las":
+            raise Exception("File format no supported!")
+
+        with open(file, "r") as f:
+            self.__lines = f.readlines()
+            self.__convert()  # read all lines from data
+        return self
+
+    def set_stream(self, stream):
+        # stream list of bytes
+        self.__lines = stream
+        self.__convert()
+        return self
+
+    @property
+    def data(self):
+        if not self.__has_converted:
+            self.__convert()
+        return self.__log["data"]
 
     def __convert(self):
         section = ""
@@ -23,6 +37,9 @@ class LasConverter :
 
         for line in self.__lines:
             content = {}
+
+            if isinstance(line, bytes):
+                line = line.decode("utf-8")
 
             if len(line) <=1 and ord(line)== 10:
                 # line just enter or "\n"
@@ -143,4 +160,3 @@ class LasConverter :
             self.__convert()
         return self.__log
     
-

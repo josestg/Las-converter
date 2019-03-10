@@ -16,6 +16,7 @@ LAS (Log ASCII Standard) is a structured ASCII file containing log curve data an
 see full LAS file [here](https://github.com/josestnggng/Las-converter/blob/master/files/sample1.las).
 
 ### Installation
+
 ```bash
 pip install las-converter
 ```
@@ -25,9 +26,34 @@ pip install las-converter
 ```py
 from LAS import LasConverter
 
-c = LasConverter("file.las") # read file las
-data_in_dict = c.get_dict() # return a dict
-data_in_json = c.get_json() # return json and make new file outfile.json
+c = LasConverter() # create object
+# set file or stream
+log_in_dict = c.set_file("file.las").get_dict()
+# or
+log_int_json = c.set_file("file.las").get_json()  # return json and make new file outfile.json
+```
+
+### Server app (Flask)
+
+```py
+# server app for handling upload
+from flask import request
+from LAS import LasConverter
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == "POST":
+        f = request.files['file']
+        stream = f.stream.readlines()
+
+
+        # code for Las Converter
+        c = LasConverter()
+        log_in_dict = c.set_stream(stream).get_dict()
+        # or
+        log_in_json = c.set_stream(stream).get_json()
+        # or get only assci/data
+        data = log_in_json = c.set_stream(stream).data
 ```
 
 ### Contributors
