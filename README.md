@@ -53,7 +53,7 @@ def upload_file():
         # or
         log_in_json = c.set_stream(stream).get_json()
         # or get only assci/data
-        data = log_in_json = c.set_stream(stream).data
+        data = c.set_stream(stream).data
 ```
 
 ### Contributors
