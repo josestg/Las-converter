@@ -8,7 +8,7 @@ setuptools.setup(
 
     name='las-converter',
 
-    version='0.1',
+    version='0.3',
 
     scripts=['converter'],
 
