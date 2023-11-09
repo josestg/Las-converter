@@ -1,1 +1,1 @@
-from .converter import LasConverter
+from .converter import Converter
