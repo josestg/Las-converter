@@ -1,5 +1,7 @@
 ## LAS 2.0 Reader and Converter
 
+[![Build Status](https://travis-ci.org/josestg/Las-converter.svg?branch=master)](https://travis-ci.org/josestg/Las-converter)
+
 This package useful for reading and converting the LAS file to python `dict` and `json`.
 
 LAS (Log ASCII Standard) is a structured ASCII file containing log curve data and header information. For more [detail](http://www.cwls.org/wp-content/uploads/2017/02/Las2_Update_Feb2017.pdf).
