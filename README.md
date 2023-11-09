@@ -1,4 +1,4 @@
-## LAS 2.0 Reader and Converter to JSON
+## LAS 2.0 Reader and Converter
 
 This package useful for reading and converting the LAS file to python `dict` and `json`.
 
