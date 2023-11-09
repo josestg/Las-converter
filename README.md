@@ -71,9 +71,9 @@ pip install las-converter
 LAS converter with `file` input. see [here](https://github.com/josestnggng/Las-converter/blob/master/files).
 
 ```py
-from LAS import LasConverter
+from LAS import Converter
 
-c = LasConverter() # create converter object
+c = Converter() # create converter object
 
 log = c.set_file("file.las") #return LogWrapper
 
@@ -98,7 +98,7 @@ LAS converter with `stream` input. see [here](https://github.com/josestnggng/Las
 ```py
 # server app for handling upload
 from flask import request
-from LAS import LasConverter
+from LAS import Converter
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
@@ -109,7 +109,7 @@ def upload_file():
         stream = f.stream.readlines()
 
         # code for Las Converter
-        c = LasConverter()
+        c = Converter()
         log  = c.set_stream(stream)
 
         # or get only assci/data
